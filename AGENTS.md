@@ -18,7 +18,7 @@ three people in madrid making native tools, in the open, with no telemetry. the 
 
 ## this repository
 
-`usage-swift` is the swift package usaaage and swaaap share, so the two apps read as one family: the window meter, the plan badge, the status dot, the in use treatment, the refresh button, the account row and card, the client marks, the formats and the menu bar glyph. it ships nothing on its own: usaaage (bylaaabs/usaaage) and swaaap (bylaaabs/swaaap) pin it by revision in their `mac/project.yml`. the module is `UsaaageKit`, the name it had inside usaaage.
+`usage-swift` is the swift package usaaage and swaaap share, so the two apps read as one family: the window meter, the plan badge, the status dot, the in use treatment, the refresh button, the account row and card, the client marks, the formats and the menu bar glyph. it ships nothing on its own: usaaage (bylaaabs/usaaage) pins it by revision in its `mac/project.yml`, and swaaap (bylaaabs/swaaap) will, in the next step of the design. the module is `UsaaageKit`, the name it had inside usaaage.
 
 ## layout
 

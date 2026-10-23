@@ -5,6 +5,6 @@ hostname: null
 kind: data
 language: swift
 build: swift build && swift test
-deploy: none; usaaage and swaaap pin it by revision in their project.yml
+deploy: none; usaaage pins it by revision in its project.yml (swaaap next)
 runs_on: null
 owner: product
