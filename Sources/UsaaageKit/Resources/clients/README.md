@@ -1,0 +1,1 @@
+the clients' marks, from simple icons (simpleicons.org, cc0, v16.35.0): `claude.svg` (Claude Code), `openai.svg` (Codex), `cursor.svg` (Cursor). the svg data is cc0; the marks stay their owners' trademarks, drawn only to name the client of an account.

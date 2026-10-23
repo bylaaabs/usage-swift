@@ -1,0 +1,10 @@
+# service.yaml - what this repo is. must agree with map/map/services.yaml; ci runs
+# `node map/scripts/check.mjs service.yaml`. schema and examples: map/schema/service.yaml.
+name: usage-swift
+hostname: null
+kind: data
+language: swift
+build: swift build && swift test
+deploy: none; usaaage and swaaap pin it by revision in their project.yml
+runs_on: null
+owner: product
