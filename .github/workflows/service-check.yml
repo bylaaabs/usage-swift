@@ -1,0 +1,25 @@
+# templates/workflows/service-check.yml - checks that service.yaml agrees with map/map/services.yaml.
+# copy to .github/workflows/service-check.yml. needs the map submodule, which is private:
+# `SUBMODULE_TOKEN` is a fine-grained token with read access to bylaaabs/map (org secret, tbd).
+name: service check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+          token: ${{ secrets.SUBMODULE_TOKEN || github.token }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node map/scripts/check.mjs service.yaml
