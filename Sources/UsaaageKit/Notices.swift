@@ -63,17 +63,31 @@ public struct NoticeLine: View {
     let title: String
     let message: String?
     let time: String?
+    let action: Action?
     let dismiss: (() -> Void)?
+
+    /// what a notice lets a person do at once, such as "sign in" for an account signed out.
+    public struct Action {
+        public let title: String
+        public let run: () -> Void
+
+        public init(title: String, run: @escaping () -> Void) {
+            self.title = title
+            self.run = run
+        }
+    }
 
     /// - parameters:
     ///   - tint: the symbol's colour (amber for usaaage's pace notices).
     ///   - time: when it came, in mono before the symbol (`14:05`).
-    public init(symbol: String, tint: Color = BrandColors.onSecondary, title: String, message: String?, time: String? = nil, dismiss: (() -> Void)? = nil) {
+    ///   - action: a word in cyan before the dismiss, when the notice has something to do.
+    public init(symbol: String, tint: Color = BrandColors.onSecondary, title: String, message: String?, time: String? = nil, action: Action? = nil, dismiss: (() -> Void)? = nil) {
         self.symbol = symbol
         self.tint = tint
         self.title = title
         self.message = message
         self.time = time
+        self.action = action
         self.dismiss = dismiss
     }
 
@@ -99,6 +113,14 @@ public struct NoticeLine: View {
                 .lineLimit(1)
                 .truncationMode(.tail)
             Spacer(minLength: 0)
+            if let action {
+                Button(action: action.run) {
+                    Text(action.title)
+                        .font(.brandButton)
+                        .foregroundStyle(BrandColors.accent)
+                }
+                .buttonStyle(.plain)
+            }
             if let dismiss {
                 Button(action: dismiss) {
                     Image(systemName: "xmark")

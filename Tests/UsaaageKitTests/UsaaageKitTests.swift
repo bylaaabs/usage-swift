@@ -192,6 +192,16 @@ import Testing
         #expect(NoticeBell.accessibilityLabel(unseen: 2) == "notices, 2 new")
     }
 
+    @Test @MainActor func theLineCanCarryAnAction() throws {
+        BrandFonts.register()
+        let plain = NoticeLine(symbol: "person", title: "spare is signed out", message: nil)
+        let acting = NoticeLine(symbol: "person", title: "spare is signed out", message: nil, action: NoticeLine.Action(title: "sign in") {})
+        #expect(plain.action == nil)
+        #expect(acting.action?.title == "sign in")
+        let renderer = ImageRenderer(content: acting.frame(width: 360))
+        #expect(renderer.cgImage != nil)
+    }
+
     @Test @MainActor func theLineShowsTheBodyOnHover() {
         #expect(NoticeLine.help(title: "work is at 95 %", message: "it resets at 14:00") == "work is at 95 %\nit resets at 14:00")
         #expect(NoticeLine.help(title: "work is at 95 %", message: nil) == "work is at 95 %")
