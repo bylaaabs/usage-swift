@@ -178,3 +178,57 @@ import Testing
         try data.write(to: URL(fileURLWithPath: dir).appendingPathComponent(name))
     }
 }
+
+@Suite struct NoticeTests {
+    @Test func theBellCountsTheUnseenUpToNine() {
+        #expect(NoticeBell.badge(unseen: 0) == nil)
+        #expect(NoticeBell.badge(unseen: 3) == "3")
+        #expect(NoticeBell.badge(unseen: 9) == "9")
+        #expect(NoticeBell.badge(unseen: 10) == "9+")
+    }
+
+    @Test func theBellSaysHowManyAreNew() {
+        #expect(NoticeBell.accessibilityLabel(unseen: 0) == "notices")
+        #expect(NoticeBell.accessibilityLabel(unseen: 2) == "notices, 2 new")
+    }
+
+    @Test @MainActor func theLineCanCarryAnAction() throws {
+        BrandFonts.register()
+        let plain = NoticeLine(symbol: "person", title: "spare is signed out", message: nil)
+        let acting = NoticeLine(symbol: "person", title: "spare is signed out", message: nil, action: NoticeLine.Action(title: "sign in") {})
+        #expect(plain.action == nil)
+        #expect(acting.action?.title == "sign in")
+        let renderer = ImageRenderer(content: acting.frame(width: 360))
+        #expect(renderer.cgImage != nil)
+    }
+
+    @Test @MainActor func theLineShowsTheBodyOnHover() {
+        #expect(NoticeLine.help(title: "work is at 95 %", message: "it resets at 14:00") == "work is at 95 %\nit resets at 14:00")
+        #expect(NoticeLine.help(title: "work is at 95 %", message: nil) == "work is at 95 %")
+    }
+}
+
+@Suite struct StripTests {
+    @MainActor @Test func theStripDrawsItsFiguresSideBySide() throws {
+        BrandFonts.register()
+        let strip = FigureStrip {
+            StripFigure(title: "with room") {
+                FigureValue("2")
+                FigureCaption("of 3, Claude Code")
+            }
+            StripDivider()
+            StripFigure(title: "next") {
+                FigureValue("work")
+            } accessory: {
+                Text("see")
+            }
+        }
+        .frame(width: 600)
+        let renderer = ImageRenderer(content: strip)
+        renderer.scale = 1
+        let image = try #require(renderer.cgImage)
+        #expect(image.width == 600)
+        // one row of figures, as tall as the tallest: padding, title, value and caption.
+        #expect(image.height > 60 && image.height < 120)
+    }
+}
