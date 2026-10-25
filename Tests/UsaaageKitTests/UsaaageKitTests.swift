@@ -197,3 +197,28 @@ import Testing
         #expect(NoticeLine.help(title: "work is at 95 %", message: nil) == "work is at 95 %")
     }
 }
+
+@Suite struct StripTests {
+    @MainActor @Test func theStripDrawsItsFiguresSideBySide() throws {
+        BrandFonts.register()
+        let strip = FigureStrip {
+            StripFigure(title: "with room") {
+                FigureValue("2")
+                FigureCaption("of 3, Claude Code")
+            }
+            StripDivider()
+            StripFigure(title: "next") {
+                FigureValue("work")
+            } accessory: {
+                Text("see")
+            }
+        }
+        .frame(width: 600)
+        let renderer = ImageRenderer(content: strip)
+        renderer.scale = 1
+        let image = try #require(renderer.cgImage)
+        #expect(image.width == 600)
+        // one row of figures, as tall as the tallest: padding, title, value and caption.
+        #expect(image.height > 60 && image.height < 120)
+    }
+}

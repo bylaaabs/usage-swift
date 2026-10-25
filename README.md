@@ -4,7 +4,7 @@ the usage pieces usaaage and swaaap share. by laaabs.
 
 ## what
 
-a swift package (module `UsaaageKit`) with the pieces both apps draw the same way: the window meter, the plan badge, the status dot, the account row and card, the client marks, the notice bell and line, the formats and the menu bar glyph. it runs nowhere on its own. issues: github.com/bylaaabs/usage-swift/issues; the map entry is `usage-swift` in `map/map/services.yaml`.
+a swift package (module `UsaaageKit`) with the pieces both apps draw the same way: the window meter, the plan badge, the status dot, the account row and card, the client marks, the notice bell and line, the dashboard strip, the formats and the menu bar glyph. it runs nowhere on its own. issues: github.com/bylaaabs/usage-swift/issues; the map entry is `usage-swift` in `map/map/services.yaml`.
 
 ## run it
 
@@ -32,4 +32,4 @@ requires macOS 27 and xcode 27; LaaabsKit (bylaaabs/ui-swift) is fetched by swif
 
 ## status
 
-building. it moved here from usaaage's `mac/UsaaageKit` on 2026-10-23, and both apps use it. the notice bell and line came next; then the pieces swaaap's dashboard needs (the strip's figure).
+building. it moved here from usaaage's `mac/UsaaageKit` on 2026-10-23, and both apps use it. the notice bell and line and the dashboard strip came next, for swaaap's panel and dashboard.
