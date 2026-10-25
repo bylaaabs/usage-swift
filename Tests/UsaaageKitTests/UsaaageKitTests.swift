@@ -178,3 +178,22 @@ import Testing
         try data.write(to: URL(fileURLWithPath: dir).appendingPathComponent(name))
     }
 }
+
+@Suite struct NoticeTests {
+    @Test func theBellCountsTheUnseenUpToNine() {
+        #expect(NoticeBell.badge(unseen: 0) == nil)
+        #expect(NoticeBell.badge(unseen: 3) == "3")
+        #expect(NoticeBell.badge(unseen: 9) == "9")
+        #expect(NoticeBell.badge(unseen: 10) == "9+")
+    }
+
+    @Test func theBellSaysHowManyAreNew() {
+        #expect(NoticeBell.accessibilityLabel(unseen: 0) == "notices")
+        #expect(NoticeBell.accessibilityLabel(unseen: 2) == "notices, 2 new")
+    }
+
+    @Test @MainActor func theLineShowsTheBodyOnHover() {
+        #expect(NoticeLine.help(title: "work is at 95 %", message: "it resets at 14:00") == "work is at 95 %\nit resets at 14:00")
+        #expect(NoticeLine.help(title: "work is at 95 %", message: nil) == "work is at 95 %")
+    }
+}
