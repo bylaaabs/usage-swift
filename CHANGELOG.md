@@ -6,6 +6,10 @@ the format is based on [keep a changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [unreleased]
 
+### changed
+
+- ui-swift at `062fedd`, whose brand has swaaap's draft wordmark; the apps pin the same (#5).
+
 ### added
 
 - `NoticeBell` and `NoticeLine`, moved from usaaage's panel unchanged in look: the bell with the unseen badge (9+ past nine) and a notice in one line, the body on hover, with an optional action in cyan (swaaap's "sign in"), so swaaap's panel draws the same ones (#3).
