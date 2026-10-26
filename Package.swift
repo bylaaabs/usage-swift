@@ -13,7 +13,7 @@ let package = Package(
     ],
     dependencies: [
         // the same revision as usaaage's and swaaap's project.yml; bump all three together.
-        .package(url: "https://github.com/bylaaabs/ui-swift", revision: "e2477a8765126240928261ed4fea438e4703ebdc"),
+        .package(url: "https://github.com/bylaaabs/ui-swift", revision: "795e659dc6ea80f82c26eb15994641c75ebe5c59"),
     ],
     targets: [
         .target(
