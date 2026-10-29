@@ -1,6 +1,7 @@
 # templates/workflows/service-check.yml - checks that service.yaml agrees with map/map/services.yaml.
-# copy to .github/workflows/service-check.yml. needs the map submodule, which is private:
-# `SUBMODULE_TOKEN` is a fine-grained token with read access to bylaaabs/map (org secret, tbd).
+# copy to .github/workflows/service-check.yml. needs the map submodule, which is private: on aaanvil
+# (every private repo) the runner hands each job a read-only token for it (env.AAANVIL_SUBMODULE_TOKEN),
+# so no secret is needed; a `SUBMODULE_TOKEN` secret, when a repo has one, still wins.
 name: service check
 
 on:
@@ -19,7 +20,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: true
-          token: ${{ secrets.SUBMODULE_TOKEN || github.token }}
+          token: ${{ secrets.SUBMODULE_TOKEN || env.AAANVIL_SUBMODULE_TOKEN || github.token }}
       - uses: actions/setup-node@v4
         with:
           node-version: 22
