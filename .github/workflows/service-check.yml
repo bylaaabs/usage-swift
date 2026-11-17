@@ -14,8 +14,8 @@ permissions:
 
 jobs:
   check:
-    # private repo: our runners (aaanvil-linux); public: github's (ubuntu-latest). bylaaabs/infra docs/runners.md
-    runs-on: ${{ github.event.repository.private && 'aaanvil-linux' || 'ubuntu-latest' }}
+    # private repo: our runners, a light lane (aaanvil-linux-light: it builds nothing); public: github's (ubuntu-latest). bylaaabs/infra docs/runners.md
+    runs-on: ${{ github.event.repository.private && 'aaanvil-linux-light' || 'ubuntu-latest' }}
     steps:
       - uses: actions/checkout@v4
         with:
