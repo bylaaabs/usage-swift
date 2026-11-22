@@ -1,0 +1,5 @@
+copyright 2026 laaabs.
+
+the code in this repository is licensed under the apache license, version 2.0 (http://www.apache.org/licenses/LICENSE-2.0).
+the laaabs. wordmark, the dot and the product wordmarks are brand assets and are not covered by that licence: they may be reproduced unmodified to refer to the studio and its products, and not otherwise.
+the marks of the clients in `Sources/UsaaageKit/Resources/clients/` (Claude, OpenAI, Cursor) are their owners' trademarks; their svg data comes from simple icons under cc0 (see the readme there), and they are drawn only to name the client of an account.
