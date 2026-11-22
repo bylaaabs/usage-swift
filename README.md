@@ -33,3 +33,7 @@ requires macOS 27 and xcode 27; LaaabsKit (bylaaabs/ui-swift) is fetched by swif
 ## status
 
 building. it moved here from usaaage's `mac/UsaaageKit` on 2026-10-23, and both apps use it. the notice bell and line and the dashboard strip came next, for swaaap's panel and dashboard.
+
+## licence
+
+[apache license 2.0](LICENSE) for the code. the laaabs. marks and the marks of the clients are not covered by it: see [LICENSE](LICENSE).
