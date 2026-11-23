@@ -27,8 +27,7 @@ requires macOS 27 and xcode 27; LaaabsKit (bylaaabs/ui-swift) is fetched by swif
 
 - `Sources/UsaaageKit/` - the pieces and the client marks.
 - `Tests/UsaaageKitTests/` - the tests.
-- `map/` - the map, as a submodule.
-- `service.yaml` - what this repo is; checked against the map in ci.
+- `service.yaml` - what this repo is.
 
 ## status
 
