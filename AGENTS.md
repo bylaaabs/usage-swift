@@ -13,7 +13,7 @@ three people in madrid making native tools, in the open, with no telemetry. the 
 - rust for cores and services, typescript for web front ends, swift / kotlin / winui only as the native layer on a rust core.
 - one repo per product, all its platforms inside; services in their own repo.
 - every piece of work has an issue; branches are `<type>/<slug>`; conventional commits; pull requests only, never a push to main; never merge without being asked.
-- `map/` is the map of everything and is a submodule here; `service.yaml` at the root describes this repo and must agree with `map/map/services.yaml`.
+- the map of everything (bylaaabs/map) is private and is not a submodule here: this repo is public. `service.yaml` at the root describes this repo; keep it in step with the map by hand.
 - `CLAUDE.md` is just `@AGENTS.md`. edit this file, not that one.
 
 ## this repository
@@ -24,8 +24,7 @@ three people in madrid making native tools, in the open, with no telemetry. the 
 
 - `Sources/UsaaageKit/` - the pieces, view values only: each app maps its own model into them (`KitWindow`, `KitClient` and the like). `Resources/clients/` holds the client marks (cc0 svg data, see its readme).
 - `Tests/UsaaageKitTests/` - the formats and the glyph.
-- `map/` - the map, as a submodule. do not edit here; open a pull request in bylaaabs/map.
-- `service.yaml` - what this repo is; must agree with `map/map/services.yaml` (`node map/scripts/check.mjs service.yaml`).
+- `service.yaml` - what this repo is; kept in step with bylaaabs/map by hand.
 
 ## conventions
 
@@ -40,7 +39,6 @@ three people in madrid making native tools, in the open, with no telemetry. the 
 
 - `swift build` - build.
 - `swift test` - test.
-- `node map/scripts/check.mjs service.yaml` - check this repo against the map.
 
 ## read before changing things
 
